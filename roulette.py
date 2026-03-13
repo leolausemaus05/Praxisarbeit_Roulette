@@ -1,3 +1,3 @@
 '''
-Datei zuer Erstellung von Roulette
+Datei zur Erstellung von Roulette
 '''
