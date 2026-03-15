@@ -16,7 +16,7 @@ if input() == Eingabe_1:
 else:
     print("You have to type in " + Eingabe_1 + " to start the game")
 
-print("On what color do you want to bet on? \033[31m red\033[0m or \033[30m black\033[0m or \033[32m green\033[0m?")
+print("On what color or number do you want to bet on? \033[31m red\033[0m or \033[30m black\033[0m or \033[32m green\033[0m?")
 
 if input() == possibillity_1:
     print("You bet on \033[31m red\033[0m!")
@@ -27,6 +27,9 @@ elif input() == possibillity_2:
 elif input() == possibillity_3:
     print("You bet on \033[32m green\033[0m!")
 
+elif input() in Zahlen:
+    print("You bet on the number " + str(input()) + "!")
+
 else:
-    print("Invalid color choice!")
+    print("Invalid color or number choice!")
 
