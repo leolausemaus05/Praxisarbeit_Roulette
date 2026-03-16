@@ -1,6 +1,6 @@
 """
 Projektname: Roulette-Spiel
-Autoren: Leo Mayer, Danny Haupt, Tim Weißhaupt, Amelie Hager
+Autoren: Leo Mayer, Danny Haupt, Tim Weishaupt, Amelie Hager
 Datum:
 
 Beschreibung: Vereinfachte Version des Glückspiels Roulette
@@ -9,9 +9,9 @@ Beschreibung: Vereinfachte Version des Glückspiels Roulette
 
 from gamelogic import wheel_spin, define_color, check_color, check_number, farben, zahlen
 
-possibility_1 = "red"
-possibility_2 = "black"
-possibility_3 = "green"
+possibility_1 = "\033[91mred\033[0m"
+possibility_2 = "\033[90mblack\033[0m"
+possibility_3 = "\033[92mgreen\033[0m"
 
 # Spiel starten
 start = "Go"
