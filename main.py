@@ -9,7 +9,6 @@ Beschreibung: Vereinfachte Version des Glückspiels Roulette
 
 from gamelogic import wheel_spin, define_color, check_color, check_number, farben, zahlen
 
-credit = 100
 possibility_1 = "red"
 possibility_2 = "black"
 possibility_3 = "green"
@@ -22,6 +21,8 @@ check = input()
 
 if check == start:
 
+    credit = int(input("How many euros do you want to bet? "))
+
     # Spielschleife, läuft solange Guthaben vorhanden ist
     while credit > 0:
     # Menüauswahl
@@ -29,7 +30,8 @@ if check == start:
         print("Your credit is:", credit)
         print("1 = Bet on color")
         print("2 = Bet on number")
-        print("3 = End game")
+        print("4 = End game")
+        print("3 = Bet on range of numbers")
 
         choice = input("Your choice: ")
 
@@ -39,25 +41,23 @@ if check == start:
             print(possibility_1, possibility_2, possibility_3)
 
             color = input("On what color do you want to bet? ").lower()
-            cash = int(input("How many euros do you want to bet? "))
-
+            
             result = wheel_spin()
             print("You bet on", color)
             print("Result:", result, define_color(result))
 
             if check_color(color, result):
                 print("You won!")
-                credit = credit + cash
+                credit = credit + credit
             else:
                 print("you lost!")
-                credit = credit - cash
+                credit = credit - credit
 
         # Zahlenwette
         elif choice == "2":
             print ("Available numbers: 0 - 36")
 
             number = int(input("On what number do you want to bet? "))
-            cash = int(input("How many euros do you want to bet? "))
 
             result = wheel_spin()
             print("You bet on", number)
@@ -65,13 +65,18 @@ if check == start:
 
             if check_number(number, result):
                 print("You won!")
-                credit = credit + cash
+                credit = credit + credit
             else:
                 print("You lost!")
-                credit = credit - cash
+                credit = credit - credit
+
+        # Auf Range der Zahlen setzen
+        elif choice == "3":
+            print("Available ranges: 1 - 12, 13 - 24, 25 - 36")
+
 
         # Spiel beenden
-        elif choice == "3":
+        elif choice == "4":
             print("Game over")
             break
 
