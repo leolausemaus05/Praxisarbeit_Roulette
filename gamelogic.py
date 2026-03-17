@@ -4,7 +4,7 @@
 import random
 
 farben = ["red", "black", "green"]
-zahlen = list[range(0, 37)]
+zahlen = list[range(0, 36)]
 
 # Rad wird gedreht, eine zufällige Zahl zwischen 0 und 36 ist das Ergebnis
 def wheel_spin():
@@ -27,3 +27,12 @@ def check_color(color, result):
 # Zahlengewinn überprüfen
 def check_number(number, result):
     return number == result
+
+# Überprüfen, ob die Zahl im richtigen Drittel liegt
+def check_drittel(drittel, result):
+    if drittel == "1":
+        return result >= 1 and result <= 12
+    elif drittel == "2":
+        return result >= 13 and result <= 24
+    elif drittel == "3":
+        return result >= 25 and result <= 36
