@@ -7,18 +7,36 @@ Beschreibung: Vereinfachte Version des Glückspiels Roulette
 
 """
 
-from gamelogic import wheel_spin, define_color, check_color, check_number, farben, zahlen, check_drittel
+from gamelogic import altersabfrage, wheel_spin, define_color, check_color, check_number, farben, zahlen, check_drittel
 
 possibility_1 = "red"
 possibility_2 = "black"
 possibility_3 = "green"
 
 # Spiel starten
-start = "Start"
+start = "start"
 
-check = input("Geben Sie 'Start' ein, um das Spiel zu beginnen: ")
+check = input("Geben Sie 'Start' ein, um das Spiel zu beginnen: ").lower().strip()
 
 if check == start:
+
+    print(
+        "=============================================\n"
+        "⚠️ ACHTUNG – Glücksspiel kann süchtig machen!\n"
+        "=============================================\n\n"
+
+        "Glücksspiel kann zur Abhängigkeit führen.\n"
+        "Bitte spielen Sie verantwortungsvoll.\n\n"
+
+        "Hilfe:\n"
+        "📞 0800 1 37 27 00 (kostenlos & anonym)\n"
+
+        "=============================================\n")
+    
+    if altersabfrage():
+        print("Willkommen zum Roulette-Spiel!\n")
+    else:
+        exit()
 
     credit = int(input("Wie viele Coins möchten Sie setzen? "))
 
@@ -98,4 +116,4 @@ if check == start:
         print("You have no credit left")
         
 else: 
-    print("You have to type in 'Go' to start the game")
+    print("You have to type in 'Start' to start the game")
