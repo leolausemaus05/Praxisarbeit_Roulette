@@ -3,7 +3,7 @@
 
 import random
 
-farben = ["red", "black", "green"]
+farben = ["red", "black", "green"] 
 zahlen = list[range(0, 36)]
 
 # Altersabfrage, um sicherzustellen, dass der Spieler alt genug ist, um zu spielen
@@ -12,6 +12,7 @@ def altersabfrage():
         altersabfrage_antwort = input("Sind Sie mindestens 18 Jahre alt? (ja/nein) ").lower().strip()
         if altersabfrage_antwort == "ja":
             print("\nAltersabfrage erfolgreich.\n")
+            print("=============================================\n\n\n")
             return True
         elif altersabfrage_antwort == "nein":
             print(
@@ -40,19 +41,19 @@ def wheel_spin():
 # Zahl wird analysiert um Farbe des Feldes herauszufinden
 def define_color(result):
     if result == 0:
-        return "green"
+        return "grün"
     elif result % 2 == 0:
-        return "black"
+        return "schwarz"
     else:
-        return "red"
+        return "rot"
     
 # Farbgewinn überprüfen
-def check_color(color, result):
-    return color == define_color(result)
+def check_color(farbe, result):
+    return farbe == define_color(result)
 
 # Zahlengewinn überprüfen
-def check_number(number, result):
-    return number == result
+def check_number(nummer, result):
+    return nummer == result
 
 # Überprüfen, ob die Zahl im richtigen Drittel liegt
 def check_drittel(drittel, result):

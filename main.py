@@ -9,86 +9,126 @@ Beschreibung: Vereinfachte Version des Glückspiels Roulette
 
 from gamelogic import altersabfrage, wheel_spin, define_color, check_color, check_number, farben, zahlen, check_drittel
 
-possibility_1 = "red"
-possibility_2 = "black"
-possibility_3 = "green"
+farbe_1 = "Rot"
+farbe_2 = "Schwarz"
+farbe_3 = "Grün"
 
 # Spiel starten
 start = "start"
 
-check = input("Geben Sie 'Start' ein, um das Spiel zu beginnen: ").lower().strip()
+starteingabe = input("Geben Sie 'Start' ein, um das Spiel zu beginnen: ").lower().strip()
 
-if check == start:
+if starteingabe == start:
 
     print(
-        "=============================================\n"
+        "\n=============================================\n"
         "⚠️ ACHTUNG – Glücksspiel kann süchtig machen!\n"
         "=============================================\n\n"
 
         "Glücksspiel kann zur Abhängigkeit führen.\n"
         "Bitte spielen Sie verantwortungsvoll.\n\n"
 
-        "Hilfe:\n"
-        "📞 0800 1 37 27 00 (kostenlos & anonym)\n"
+        "Beratung & Unterstützung:\n"
+        "📞 0800 1 37 27 00 (kostenlos & anonym)\n\n"
 
         "=============================================\n")
     
     if altersabfrage():
-        print("Willkommen zum Roulette-Spiel!\n")
+        print(
+            "=============================================\n"
+            "🎰      WILLKOMMEN ZUM ROULETTE-SPIEL      🎰\n"
+            "=============================================\n")
     else:
         exit()
 
-    credit = int(input("Wie viele Coins möchten Sie setzen? "))
+
+
+    while True:
+        print("Wie viele Jetons möchten Sie aufladen? ")
+        guthaben = input("Aufladen: ")
+        try:
+            guthaben = int(guthaben)
+        except ValueError:
+            print("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.")
+            continue
+       
+        if guthaben <= 0:
+            print("Der Betrag muss mindestens 1 Jeton betragen.")
+            continue
+
+        break
 
     # Spielschleife, läuft solange Guthaben vorhanden ist
-    while credit > 0:
+    while guthaben > 0:
     # Menüauswahl
-        print("Spiel gestartet...")
-        print("Ihr Guthaben beträgt:", credit , "Coins")
+        print("Ihr Guthaben beträgt: ", guthaben , " Jetons")
+        print("Wie viel Jetons möchten Sie diese Runde setzen? ")
+        while True:
+            rundeneinsatz = input("Einsatz: ")
+
+            try:
+                rundeneinsatz = int(rundeneinsatz)
+            except ValueError:
+                print("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.")
+                continue
+
+            if rundeneinsatz > guthaben:
+                print("Sie können nicht mehr Jetons setzen, als ihr Guthaben beträgt.")
+                continue
+            elif rundeneinsatz <= 0:
+                print("Der Einsatz muss mindestens 1 Jeton betragen.")
+                continue
+            elif rundeneinsatz == guthaben:
+                print("Sie setzen ihr gesamtes Guthaben, Viel Glück!")
+                
+            break
+
+        print("Auf was möchten Sie Ihren Einsatz von ", rundeneinsatz, " Jetons setzen? ")
+        print("Wählen Sie eine der folgenden Optionen:")
         print("1 = Auf eine Farbe setzen")
         print("2 = Auf eine Zahl setzen")
         print("3 = Auf ein Drittel der Zahlen setzen")
         print("4 = Spiel beenden")
 
-        choice = input("Bitte wählen Sie ihre Option: ")
+        spielauswahl = input("Bitte wählen Sie ihre Option: ")
 
         # Farbwette
-        if choice == "1":
+        if spielauswahl == "1":
             print("Sie können auf folgende Farben setzen:")
-            print(possibility_1, possibility_2, possibility_3)
+            print(farbe_1, farbe_2, farbe_3)
 
-            color = input("Auf welche Farbe möchten Sie wetten? (red, black, green) ").lower()
+            farbe = input("Auf welche Farbe möchten Sie wetten? (Rot, Schwarz, Grün) ").lower().strip()
             
             result = wheel_spin()
-            print("Sie haben auf", color, "gewettet")
+            print("Sie haben auf", farbe, "gewettet")
             print("Ergebnis:", result, define_color(result))
 
-            if check_color(color, result):
+            if check_color(farbe, result):
                 print("Sie haben gewonnen!")
-                credit = credit * 2
+                guthaben = guthaben + (rundeneinsatz * 2)
             else:
                 print("Sie haben verloren!")
-                credit = credit - credit
+                guthaben = guthaben - rundeneinsatz
 
         # Zahlenwette
-        elif choice == "2":
+        elif spielauswahl == "2":
             print ("Sie können auf folgende Zahlen setzen: 0 - 36")
 
-            number = int(input("Auf welche Zahl möchten Sie wetten? "))
+            nummer = int(input("Auf welche Zahl möchten Sie wetten? "))
 
             result = wheel_spin()
-            print("Sie haben auf", number, "gewettet")
+            print("Sie haben auf", nummer, "gewettet")
             print("Ergebnis:", result, define_color(result))
 
-            if check_number(number, result):
+            if check_number(nummer, result):
                 print("Sie haben gewonnen!")
-                credit = credit * 36
+                guthaben = guthaben + (rundeneinsatz * 36)
             else:
                 print("Sie haben verloren!")
-                credit = credit - credit
+                guthaben = guthaben - rundeneinsatz
 
         # Auf Range der Zahlen setzen
-        elif choice == "3":
+        elif spielauswahl == "3":
             print("Sie können auf folgende Drittel setzen: 1 - 12, 13 - 24, 25 - 36")
 
             drittel = input("Auf welches Drittel möchten Sie setzen? (1, 2 oder 3) ")
@@ -98,22 +138,22 @@ if check == start:
 
             if check_drittel(drittel, result):
                 print("Sie haben auf das richtige Drittel gesetzt, Sie haben gewonnen!")
-                credit = credit * 3
+                guthaben = guthaben + (rundeneinsatz * 3)
             else:
                 print("Sie haben verloren!")
-                credit = credit - credit
+                guthaben = guthaben - rundeneinsatz
 
         # Spiel beenden
-        elif choice == "4":
+        elif spielauswahl == "4":
             print("Game over")
             break
 
         else:
-            print("You have to choose option 1, 2 or 3")
+            print("Ungültige Eingabe. Bitte wählen Sie eine der Optionen 1, 2, 3 oder 4.")
 
     # Guthaben leer
-    if credit <= 0:
-        print("You have no credit left")
+    if guthaben <= 0:
+        print("Sie haben kein Guthaben mehr übrig. Das Spiel ist hiermit beendet. Viel Glück beim nächsten Mal!")
         
 else: 
-    print("You have to type in 'Start' to start the game")
+    print("Sie müssen 'Start' eingeben, um das Spiel zu beginnen")
