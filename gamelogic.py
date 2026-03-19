@@ -3,8 +3,8 @@
 
 import random
 
-farben = ["red", "black", "green"] 
-zahlen = list[range(0, 36)]
+VALID_FARBEN = ["rot", "schwarz", "grün"] 
+VALID_DRITTEL = ["1", "2", "3"]
 
 # Altersabfrage, um sicherzustellen, dass der Spieler alt genug ist, um zu spielen
 def altersabfrage():
@@ -35,8 +35,7 @@ def altersabfrage():
 
 # Rad wird gedreht, eine zufällige Zahl zwischen 0 und 36 ist das Ergebnis
 def wheel_spin():
-    result = random.randint(0, 36)
-    return result
+    return random.randint(0, 36)
 
 # Zahl wird analysiert um Farbe des Feldes herauszufinden
 def define_color(result):
@@ -58,8 +57,8 @@ def check_number(nummer, result):
 # Überprüfen, ob die Zahl im richtigen Drittel liegt
 def check_drittel(drittel, result):
     if drittel == "1":
-        return result >= 1 and result <= 12
+        return 1 <= result <= 12
     elif drittel == "2":
-        return result >= 13 and result <= 24
+        return 13 <= result <= 24
     elif drittel == "3":
-        return result >= 25 and result <= 36
+        return 25 <= result <= 36
