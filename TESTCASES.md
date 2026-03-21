@@ -25,8 +25,8 @@ Abfrage 4: Wie viele Jetons möchten Sie diese Runde setzen.
 
 Eingabe 4: 100
 
-Erwartete Ausgabe: Abfrage 5
-Eingetroffene Ausgabe: Abfrage 5
+Erwartete Ausgabe: Sie setzen ihr gesamtes Guthaben, Viel Glück! + Abfrage 5
+Eingetroffene Ausgabe: Sie setzen ihr gesamtes Guthaben, Viel Glück! + Abfrage 5
 
 Abfrage 5: Wählen Sie eine der vier Setzoptionen (1-4).
 
@@ -37,7 +37,7 @@ Einagbe 5.1: 1 (Auf eine Farbe setzen)
 Erwartete Ausgabe: Abgrage 6.1
 Eingetroffene Ausgabe: Abfrage 6.1
 
-Abfrage 6.1: Welche Frabe wählen Sie? (Rot, Grün, Schwarz)
+Abfrage 6.1: Welche Frabe wählen Sie? (Rot, Schwarz)
 
 Eigabe 6.1: Rot
 
@@ -59,7 +59,7 @@ Abfrage 6.2: Welche Zahl wählen Sie? (0-36)
 
 Eigabe 6.2: Zahl zwischen 0 und 36 (ich wähle 15)
 
-Erwartete Ausgabe: Random Farbe 
+Erwartete Ausgabe: Random Zahl 
                     bei Eingabe 6.2 = Random Zahl gewonnen -> Guthaben 3600 Jetons -> Abfrage 5
                     -> verloren -> Guthaben 0 Jetons -> kein Guthaben mehr 
                     -> Abfrage 7
