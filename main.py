@@ -83,6 +83,8 @@ def spiel_starten():
                     else:
                         if rundeinsatz == guthaben:
                             print("Sie setzen ihr gesamtes Guthaben, Viel Glück!")
+                            
+                        guthaben = guthaben - rundeinsatz
                         break
                     
                 except ValueError:
