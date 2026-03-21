@@ -13,7 +13,6 @@ from gamelogic import altersabfrage, wheel_spin, define_color, check_color, chec
 
 # Farbcodes für farbige Ausgabe
 ROT = "\033[31m"
-GRUEN = "\033[32m"
 SCHWARZ_TEXT = "\033[90m" # Farbe ist grau wegen Lesbarkeit
 RESET = "\033[0m"
 
@@ -22,8 +21,6 @@ VALID_SPIELOPTIONEN = {"1", "2", "3", "4"}
 def farbtext(text, farbe):
     if farbe == "rot":
         return f"{ROT}{text}{RESET}"
-    elif farbe == "grün":
-        return f"{GRUEN}{text}{RESET}"
     elif farbe == "schwarz":
         return f"{SCHWARZ_TEXT}{text}{RESET}"
     else:
@@ -83,7 +80,7 @@ def spiel_starten():
                     else:
                         if rundeinsatz == guthaben:
                             print("Sie setzen ihr gesamtes Guthaben, Viel Glück!")
-                            
+
                         guthaben = guthaben - rundeinsatz
                         break
                     
@@ -111,7 +108,6 @@ def spiel_starten():
                 print("Sie können auf folgende Farben setzen:")
                 print(
                     farbtext("Rot", "rot"),
-                    farbtext("Grün", "grün"),
                     farbtext("Schwarz", "schwarz")
                 )
                  
@@ -121,7 +117,7 @@ def spiel_starten():
                     if farbe in VALID_FARBEN:
                         break
                     else:
-                        print("Ungültige Eingabe. Bitte geben Sie 'rot', 'schwarz' oder 'grün' ein.")
+                        print("Ungültige Eingabe. Bitte geben Sie 'rot' oder 'schwarz' ein.")
 
                 result = wheel_spin()
                 ergebnis_farbe = define_color(result)
@@ -133,7 +129,6 @@ def spiel_starten():
                     guthaben = guthaben + (rundeinsatz * 2)
                 else:
                     print("Sie haben verloren!")
-                    guthaben = guthaben - rundeinsatz
             
             # Zahlenwette
             elif spielauswahl == "2":
@@ -160,7 +155,6 @@ def spiel_starten():
                     guthaben = guthaben + (rundeinsatz * 36)
                 else:
                     print("Sie haben verloren!")
-                    guthaben = guthaben - rundeinsatz 
 
 
             # Auf Range der Zahlen setzen
@@ -189,7 +183,6 @@ def spiel_starten():
                     guthaben = guthaben + (rundeinsatz * 3)
                 else:
                     print("Sie haben verloren!")
-                    guthaben = guthaben - rundeinsatz
 
 
             # Spiel beenden

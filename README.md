@@ -2,7 +2,7 @@
 
 Diese Programm ist eine vereinfachte Version des Glückspiels Roulette.
 Als Nutzer kann man Guthaben aufladen und entweder auf 
-- Farben (rot, grün, schwarz)
+- Farben (rot, schwarz)
 - einzelne Zahlen ( von 0 bis 36)
 - Zahlendrittel (1-12, 13-24, 25-36)
 setzen.

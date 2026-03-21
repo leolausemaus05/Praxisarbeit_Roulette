@@ -3,7 +3,7 @@
 
 import random
 
-VALID_FARBEN = ["rot", "schwarz", "grün"] 
+VALID_FARBEN = ["rot", "schwarz"] 
 VALID_DRITTEL = ["1", "2", "3"]
 
 # Altersabfrage, um sicherzustellen, dass der Spieler alt genug ist, um zu spielen
