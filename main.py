@@ -87,6 +87,7 @@ def spiel_starten():
                     
                 except ValueError:
                      print("Ungültige Eingabe. Bitte geben Sie eine ganze Zahl ein.")
+                     
             while True:
                 # Menüoptionen
                 print(f"\nAuf was möchten Sie Ihren Einsatz von {rundeinsatz} Jetons setzen?")
