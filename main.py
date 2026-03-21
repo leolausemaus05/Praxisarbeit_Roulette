@@ -122,7 +122,7 @@ def spiel_starten():
 
                 if check_color(farbe, result):
                     print("Sie haben gewonnen!")
-                    guthaben = guthaben + (rundeinsatz * 2)
+                    guthaben = guthaben + rundeinsatz
                 else:
                     print("Sie haben verloren!")
                     guthaben = guthaben - rundeinsatz
