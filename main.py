@@ -17,7 +17,7 @@ GRUEN = "\033[32m"
 SCHWARZ_TEXT = "\033[90m" # Farbe ist grau wegen Lesbarkeit
 RESET = "\033[0m"
 
-VALID_OPTIONEN = ["1", "2", "3", "4"]
+VALID_SPIELOPTIONEN = {"1", "2", "3", "4"}
 
 def farbtext(text, farbe):
     if farbe == "rot":
@@ -67,7 +67,7 @@ def spiel_starten():
              print("Ungültige Eingabe. Bitte geben Sie eine ganze Zahl ein.")
             
     while guthaben > 0:
-            print(f"Ihr Guthaben beträgt: {guthaben} Jetons.")
+            print(f"\nIhr Guthaben beträgt: {guthaben} Jetons.")
             print("Wie viele Jetons möchten Sie diese Runde setzen?")
 
             while True:
@@ -87,16 +87,22 @@ def spiel_starten():
                     
                 except ValueError:
                      print("Ungültige Eingabe. Bitte geben Sie eine ganze Zahl ein.")
-        
-            # Menüoptionen
-            print(f"\nAuf was möchten Sie Ihren Einsatz von {rundeinsatz} Jetons setzen?")
-            print("Wählen Sie eine der folgenden Optionen:")
-            print("1 = Auf eine Farbe setzen")
-            print("2 = Auf eine Zahl setzen")
-            print("3 = Auf ein Drittel der Zahlen setzen")
-            print("4 = Spiel beenden")
 
-            spielauswahl = input("Bitte wählen Sie ihre Option: ").strip()
+            while True:
+                # Menüoptionen
+                print(f"\nAuf was möchten Sie Ihren Einsatz von {rundeinsatz} Jetons setzen?")
+                print("Wählen Sie eine der folgenden Optionen:")
+                print("1 = Auf eine Farbe setzen")
+                print("2 = Auf eine Zahl setzen")
+                print("3 = Auf ein Drittel der Zahlen setzen")
+                print("4 = Spiel beenden")
+
+                spielauswahl = input("Bitte wählen Sie ihre Option: ").strip()
+
+                if spielauswahl in VALID_SPIELOPTIONEN:
+                    break  
+                else:
+                    print("Ungültige Eingabe. Bitte wählen Sie eine der Optionen 1, 2, 3 oder 4.\n")
 
             # Farbwette
             if spielauswahl == "1":
@@ -190,7 +196,7 @@ def spiel_starten():
                 return
 
             else:
-                print("Ungültige Eingabe. Bitte wählen Sie eine der Optionen 1, 2, 3 oder 4.")
+                print("Ungültige Eingabe.")
 
     # Auswahl bei leerem Guthaben
     print("\nSie haben kein Guthaben mehr übrig.")
